@@ -124,9 +124,8 @@ resource "aws_ecr_repository_policy" "ecr_repository_policy_dev" {
       }
     ]
   })
+  depends_on = [aws_ecr_repository.ecr_repository]
 }
-
-
 
 resource "github_actions_variable" "repo_ecr_repository" {
   count        = (var.container_provider == "ECR") ? 1 : 0
